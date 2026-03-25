@@ -571,48 +571,42 @@ function showError(msgEl,msg){
 
 /* SUBMIT */
 function submitForm(){
-  var btn=document.getElementById("submit-btn");
-  var msgEl=document.getElementById("form-msg");
-  if(!validateForm())return;
-  msgEl.style.display="none";
-  btn.disabled=true;
-  btn.innerHTML='<span class="spinner"></span>&nbsp; Submitting Application...';
+  var btn = document.getElementById("submit-btn");
+  var msgEl = document.getElementById("form-msg");
   
-  var appData={
+  if(!validateForm()) return;
+  
+  msgEl.style.display = "none";
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span>&nbsp; Submitting...';
+  
+  var appData = {
     organisation: document.getElementById("f-college").value.trim(),
-    sector: "Internship Lead — " + selTrack,
     contact: document.getElementById("f-name").value.trim(),
     email: document.getElementById("f-email").value.trim(),
-    phone: document.getElementById("f-phone").value.trim().replace(/[\s\-\(\)]/g,""),
-    service: "[PRE-REGISTRATION] " + selDuration + " | " + selTrack,
-    roles: "Degree:" + document.getElementById("f-degree").value + " | Sem:" + document.getElementById("f-semester").value +
-      (document.getElementById("f-link").value.trim() ? " | Portfolio:" + document.getElementById("f-link").value.trim() : "") +
-      (document.getElementById("f-why").value.trim() ? " | Why:" + document.getElementById("f-why").value.trim().slice(0,200) : "")
+    phone: document.getElementById("f-phone").value.trim(),
+    service: "[PRE-REG] " + selTrack + " (" + selDuration + ")",
+    roles: "Degree: " + document.getElementById("f-degree").value + 
+           " | Sem: " + document.getElementById("f-semester").value + 
+           " | Why: " + document.getElementById("f-why").value.trim()
   };
 
-  // Ensure this URL is your LATEST deployed Google Apps Script URL ending in /exec
-  var SHEET_URL = "https://script.google.com/macros/s/AKfycbx1uS5O-tCs8nR7YtI8kvwdc2L3f5h4nhFq_1s1mlpBtlEI96kqQPHewWx_Y97s4ptT/exec";
-
-  // Use no-cors mode to bypass browser blocks on Google Script redirects
   fetch(SHEET_URL, {
     method: "POST",
     mode: "no-cors", 
-    headers: {
-      "Content-Type": "application/json"
-    },
+    headers: { "Content-Type": "text/plain" },
     body: JSON.stringify(appData)
   })
-  .then(function() {
-    // Under no-cors, we assume success if the network request resolves
+  .then(() => {
     showSuccessView();
   })
-  .catch(function(error){
-    showError(document.getElementById("form-msg"), "Connection issue. Please check your internet and try again.");
+  .catch((err) => {
+    showError(msgEl, "Network error. Please try again.");
     btn.disabled = false;
-    btn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Registration Application';
+    btn.innerHTML = 'Submit Registration Application';
   });
 }
-/* SUCCESS */
+  /* SUCCESS */
 function showSuccessView(){
   var fc=document.getElementById("form-card");
   var sv=document.getElementById("success-view");
