@@ -8,33 +8,21 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
 <style>
-/* ═══ PEREGRINE DESIGN TOKENS ═══════════════════════════════ */
 :root {
-  --ink:         #0a0f0d;
-  --ink-soft:    #111916;
-  --ink-card:    #141c17;
-  --forest:      #0d5e3a;
-  --forest-2:    #0f7045;
-  --gold:        #c9913a;
-  --gold-2:      #e8b05a;
-  --gold-pale:   #f5e8c8;
-  --cream:       #faf6ed;
-  --glass-bg:    rgba(255,255,255,0.055);
-  --glass-bd:    rgba(255,255,255,0.10);
-  --text-hi:     #f2ede4;
-  --text-mid:    #b8b0a0;
-  --text-lo:     #7a7060;
-  --text-muted:  #4a4640;
-  --r-sm:10px; --r-md:16px; --r-lg:22px; --r-xl:32px;
-  --ease-out:    cubic-bezier(0.16,1,0.3,1);
-  --ease-spring: cubic-bezier(0.34,1.56,0.64,1);
-  --ease-luxury: cubic-bezier(0.25,0.46,0.45,0.94);
+  --ink:#0a0f0d;--ink-soft:#111916;--ink-card:#141c17;
+  --forest:#0d5e3a;--forest-2:#0f7045;
+  --gold:#c9913a;--gold-2:#e8b05a;--gold-pale:#f5e8c8;
+  --cream:#faf6ed;
+  --glass-bg:rgba(255,255,255,0.055);--glass-bd:rgba(255,255,255,0.10);
+  --text-hi:#f2ede4;--text-mid:#b8b0a0;--text-lo:#7a7060;--text-muted:#4a4640;
+  --r-sm:10px;--r-md:16px;--r-lg:22px;--r-xl:32px;
+  --ease-out:cubic-bezier(0.16,1,0.3,1);
+  --ease-spring:cubic-bezier(0.34,1.56,0.64,1);
+  --ease-luxury:cubic-bezier(0.25,0.46,0.45,0.94);
   --font-display:'Cormorant Garamond',Georgia,serif;
-  --font-body:   'Outfit',system-ui,sans-serif;
+  --font-body:'Outfit',system-ui,sans-serif;
 }
-/* ═══ RESET ════════════════════════════════════════════════ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;font-size:16px}
 body{font-family:var(--font-body);background:var(--ink);color:var(--text-hi);min-height:100dvh;overflow-x:hidden;-webkit-font-smoothing:antialiased;touch-action:manipulation;cursor:none;}
@@ -201,7 +189,7 @@ textarea.pg-input{height:90px;resize:vertical;line-height:1.6}
 .dur-opt.active::before,.dur-opt:hover::before{opacity:1}
 .dur-h{font-family:var(--font-display);font-size:1.6rem;font-weight:700;color:var(--text-hi);line-height:1;margin-bottom:.25rem;transition:color .25s,transform .3s var(--ease-spring);}
 .dur-opt.active .dur-h,.dur-opt:hover .dur-h{color:var(--gold);transform:scale(1.06);}
-.dur-credits{font-size:.65rem;font-weight:700;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.2rem}
+.dur-credits{font-size:.65rem;font-weight:700;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:.2rem}
 .dur-desc{font-size:.75rem;color:var(--text-lo)}
 
 /* BUTTON */
@@ -229,14 +217,85 @@ textarea.pg-input{height:90px;resize:vertical;line-height:1.6}
 .next-item p strong{color:var(--text-hi)}
 
 /* ── WHATSAPP COMMUNITY CARD ── */
-.wa-join-card { background: linear-gradient(135deg, rgba(37, 211, 102, 0.1) 0%, rgba(13, 94, 58, 0.2) 100%); border: 1px solid rgba(37, 211, 102, 0.3); border-radius: var(--r-lg); padding: 1.5rem; margin: 2rem 0; display: flex; align-items: center; gap: 1.5rem; text-align: left; box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
-.wa-qr-box { width: 130px; height: 130px; flex-shrink: 0; border-radius: 12px; overflow: hidden; border: 2px solid rgba(37, 211, 102, 0.5); background: #fff; display: flex; align-items: center; justify-content: center; position: relative; }
-.wa-qr-img { width: 260%; height: auto; object-fit: cover; object-position: center 52%; }
-.wa-info h4 { font-family: var(--font-display); font-size: 1.4rem; color: #4ade80; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.4rem; font-weight: 700; }
-.wa-info p { font-size: 0.85rem; color: var(--text-hi); line-height: 1.5; margin-bottom: 1rem; }
-.wa-btn { display: inline-flex; align-items: center; gap: 0.5rem; background: #25D366; color: #0a0f0d; font-family: var(--font-body); font-weight: 700; font-size: 0.85rem; padding: 0.6rem 1.25rem; border-radius: 50px; text-decoration: none; transition: all 0.2s ease; cursor: pointer; }
-.wa-btn:hover { background: #21bd5c; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(37, 211, 102, 0.3); }
-@media(max-width: 576px) { .wa-join-card { flex-direction: column; text-align: center; padding: 1.25rem; } .wa-info h4 { justify-content: center; } }
+.wa-join-card {
+  background: linear-gradient(135deg, rgba(37, 211, 102, 0.1) 0%, rgba(13, 94, 58, 0.2) 100%);
+  border: 1px solid rgba(37, 211, 102, 0.3);
+  border-radius: var(--r-lg);
+  padding: 1.5rem;
+  margin: 2rem 0;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: left;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+.wa-qr-box {
+  width: 130px;
+  height: 130px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid rgba(37, 211, 102, 0.5);
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+/* This CSS crops out the green background of your raw screenshot */
+.wa-qr-img {
+  width: 260%;
+  height: auto;
+  object-fit: cover;
+  object-position: center 52%; 
+}
+.wa-info h4 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: #4ade80;
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 700;
+}
+.wa-info p {
+  font-size: 0.85rem;
+  color: var(--text-hi);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+.wa-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #25D366;
+  color: #0a0f0d;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.6rem 1.25rem;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.wa-btn:hover {
+  background: #21bd5c;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(37, 211, 102, 0.3);
+}
+
+@media(max-width: 576px) {
+  .wa-join-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.25rem;
+  }
+  .wa-info h4 {
+    justify-content: center;
+  }
+}
 
 /* FOOTER */
 .site-footer{position:relative;z-index:2;border-top:1px solid rgba(255,255,255,0.07);padding:clamp(2rem,5vw,4rem) clamp(1rem,4vw,2.5rem) clamp(1.5rem,3vw,2.5rem);}
@@ -440,7 +499,7 @@ textarea.pg-input{height:90px;resize:vertical;line-height:1.6}
     
     <div class="wa-join-card">
       <div class="wa-qr-box">
-        <img src="https://raw.githubusercontent.com/Peregrinetandc/academy-frontend/main/whatsapp-community_QR.JPG" alt="WhatsApp Community QR" class="wa-qr-img">
+        <img src="https://raw.githubusercontent.com/Peregrinetandc/summer2026-register/main/whatsapp-community_QR.JPG" alt="WhatsApp Community QR" class="wa-qr-img">
       </div>
       <div class="wa-info">
         <h4><i class="fab fa-whatsapp"></i> Join Our Community</h4>
@@ -638,7 +697,9 @@ function submitForm(){
     showSuccessView();
   })
   .catch((err) => {
-    showSuccessView(); // Assuming it went through due to no-cors
+    showError(msgEl, "Network error. Please try again.");
+    btn.disabled = false;
+    btn.innerHTML = 'Submit Registration Application';
   });
 }
   /* SUCCESS */
